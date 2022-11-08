@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68F12D15-D90C-49D7-9AB8-C89B4EF8D7F5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StoriesHelper</RootNamespace>
+    <AssemblyName>StoriesHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.2.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.2\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentDateTime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6ccbc613702e6c71, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentDateTime.2.0.0\lib\netstandard2.0\FluentDateTime.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\OneDrive\Bureau\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\IconeUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Images\IconeUser.Designer.cs">
+      <DependentUpon>IconeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ColumnState.cs" />
+    <Compile Include="Models\LogHistory.cs" />
+    <Compile Include="Repository\LogHistoryRepository.cs" />
+    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\ColumnStateRepository.cs" />
+    <Compile Include="Repository\TeamRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Services\Calcul.cs" />
+    <Compile Include="Services\CustomTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\CustomTextBox.Designer.cs">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LigneVerticale.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LigneVerticale.Designer.cs">
+      <DependentUpon>LigneVerticale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LigneHorizontale.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LigneHorizontale.Designer.cs">
+      <DependentUpon>LigneHorizontale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TeamNameType.cs" />
+    <Compile Include="Services\ProjectNameType.cs" />
+    <Compile Include="Services\UserList.cs" />
+    <Compile Include="Windows\Logs\LogConsole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Logs\LogConsole.Designer.cs">
+      <DependentUpon>LogConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Logs\LogMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Logs\LogMain.Designer.cs">
+      <DependentUpon>LogMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Logs\LogStatistique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Logs\LogStatistique.Designer.cs">
+      <DependentUpon>LogStatistique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconProject.Designer.cs">
+      <DependentUpon>IconProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconTeam.Designer.cs">
+      <DependentUpon>IconTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\Icons\IconUser.Designer.cs">
+      <DependentUpon>IconUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\OrganizationListProjects.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\OrganizationListProjects.Designer.cs">
+      <DependentUpon>OrganizationListProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\MainOrganizationListProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\MainOrganizationListProject.Designer.cs">
+      <DependentUpon>MainOrganizationListProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\OrganizationPaginationProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListProject\OrganizationPaginationProject.Designer.cs">
+      <DependentUpon>OrganizationPaginationProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\MainOrganizationListTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\MainOrganizationListTeam.Designer.cs">
+      <DependentUpon>MainOrganizationListTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\OrganizationListTeams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\OrganizationListTeams.Designer.cs">
+      <DependentUpon>OrganizationListTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\OrganizationPaginationTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationListTeam\OrganizationPaginationTeam.Designer.cs">
+      <DependentUpon>OrganizationPaginationTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Organizations\OrganizationMain.Designer.cs">
+      <DependentUpon>OrganizationMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BelongsTo.cs" />
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\TaskComment.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TaskMembers.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Organization.cs" />
+    <Compile Include="Services\Gradient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\MyDraggableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\main.Designer.cs">
+      <DependentUpon>main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconDescription.Designer.cs">
+      <DependentUpon>IconDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconDate.Designer.cs">
+      <DependentUpon>IconDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconTeam.Designer.cs">
+      <DependentUpon>IconTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconUser.Designer.cs">
+      <DependentUpon>IconUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\IconType.Designer.cs">
+      <DependentUpon>IconType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\MainIcon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\Icons\MainIcon.Designer.cs">
+      <DependentUpon>MainIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\MainProjectListTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\MainProjectListTeam.Designer.cs">
+      <DependentUpon>MainProjectListTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\ProjectListTeams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\ProjectListTeams.Designer.cs">
+      <DependentUpon>ProjectListTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\ProjectPaginationTeam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectListTeam\ProjectPaginationTeam.Designer.cs">
+      <DependentUpon>ProjectPaginationTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Projects\ProjectMain.Designer.cs">
+      <DependentUpon>ProjectMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Quitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Quitter.Designer.cs">
+      <DependentUpon>Quitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Session.cs" />
+    <Compile Include="Windows\Teams\TeamListUser\MainTeamListUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamListUser\MainTeamListUser.Designer.cs">
+      <DependentUpon>MainTeamListUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamListUser\TeamPaginationUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamListUser\TeamPaginationUser.Designer.cs">
+      <DependentUpon>TeamPaginationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamListUser\TeamListUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamListUser\TeamListUsers.Designer.cs">
+      <DependentUpon>TeamListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamMain.Designer.cs">
+      <DependentUpon>TeamMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamGraphicsAdvanced.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamGraphicsAdvanced.Designer.cs">
+      <DependentUpon>TeamGraphicsAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamTaskGraphics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamTaskGraphics.Designer.cs">
+      <DependentUpon>TeamTaskGraphics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamTaskStatistiques.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TeamTaskStatistiques.Designer.cs">
+      <DependentUpon>TeamTaskStatistiques.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TitreStatistique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Teams\TeamStatistiques\TitreStatistique.Designer.cs">
+      <DependentUpon>TitreStatistique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Users\UserInterface\UserInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Users\UserInterface\UserInterface.Designer.cs">
+      <DependentUpon>UserInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Users\UserListUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Users\UserListUsers.Designer.cs">
+      <DependentUpon>UserListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Users\UserMainList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Users\UserMainList.Designer.cs">
+      <DependentUpon>UserMainList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Users\UserPaginationUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Users\UserPaginationUsers.Designer.cs">
+      <DependentUpon>UserPaginationUsers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Images\IconeUser.resx">
+      <DependentUpon>IconeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Logs\LogConsole.resx">
+      <DependentUpon>LogConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Logs\LogMain.resx">
+      <DependentUpon>LogMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Logs\LogStatistique.resx">
+      <DependentUpon>LogStatistique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\main.resx">
+      <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\Icons\IconProject.resx">
+      <DependentUpon>IconProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\Icons\IconTeam.resx">
+      <DependentUpon>IconTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\Icons\IconUser.resx">
+      <DependentUpon>IconUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListProject\OrganizationListProjects.resx">
+      <DependentUpon>OrganizationListProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListProject\MainOrganizationListProject.resx">
+      <DependentUpon>MainOrganizationListProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListProject\OrganizationPaginationProject.resx">
+      <DependentUpon>OrganizationPaginationProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListTeam\MainOrganizationListTeam.resx">
+      <DependentUpon>MainOrganizationListTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListTeam\OrganizationListTeams.resx">
+      <DependentUpon>OrganizationListTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationListTeam\OrganizationPaginationTeam.resx">
+      <DependentUpon>OrganizationPaginationTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Organizations\OrganizationMain.resx">
+      <DependentUpon>OrganizationMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Windows\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\IconDescription.resx">
+      <DependentUpon>IconDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\IconDate.resx">
+      <DependentUpon>IconDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\IconTeam.resx">
+      <DependentUpon>IconTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\IconUser.resx">
+      <DependentUpon>IconUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\IconType.resx">
+      <DependentUpon>IconType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\Icons\MainIcon.resx">
+      <DependentUpon>MainIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\ProjectListTeam\MainProjectListTeam.resx">
+      <DependentUpon>MainProjectListTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\ProjectListTeam\ProjectListTeams.resx">
+      <DependentUpon>ProjectListTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\ProjectListTeam\ProjectPaginationTeam.resx">
+      <DependentUpon>ProjectPaginationTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Projects\ProjectMain.resx">
+      <DependentUpon>ProjectMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Quitter.resx">
+      <DependentUpon>Quitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamListUser\MainTeamListUser.resx">
+      <DependentUpon>MainTeamListUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamListUser\TeamPaginationUser.resx">
+      <DependentUpon>TeamPaginationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamListUser\TeamListUsers.resx">
+      <DependentUpon>TeamListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamMain.resx">
+      <DependentUpon>TeamMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamStatistiques\TeamGraphicsAdvanced.resx">
+      <DependentUpon>TeamGraphicsAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamStatistiques\TeamTaskGraphics.resx">
+      <DependentUpon>TeamTaskGraphics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamStatistiques\TeamTaskStatistiques.resx">
+      <DependentUpon>TeamTaskStatistiques.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Teams\TeamStatistiques\TitreStatistique.resx">
+      <DependentUpon>TitreStatistique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Users\UserInterface\UserInterface.resx">
+      <DependentUpon>UserInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Users\UserListUsers.resx">
+      <DependentUpon>UserListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Users\UserMainList.resx">
+      <DependentUpon>UserMainList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Users\UserPaginationUsers.resx">
+      <DependentUpon>UserPaginationUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\StoriesHelper.exe.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BCrypt.Net-Next.dll" />
+    <Content Include="bin\Debug\BCrypt.Net-Next.xml" />
+    <Content Include="bin\Debug\BouncyCastle.Crypto.dll" />
+    <Content Include="bin\Debug\Google.Protobuf.dll" />
+    <Content Include="bin\Debug\K4os.Compression.LZ4.dll" />
+    <Content Include="bin\Debug\K4os.Compression.LZ4.Streams.dll" />
+    <Content Include="bin\Debug\K4os.Hash.xxHash.dll" />
+    <Content Include="bin\Debug\MySql.Data.dll" />
+    <Content Include="bin\Debug\StoriesHelper.exe" />
+    <Content Include="bin\Debug\StoriesHelper.pdb" />
+    <Content Include="bin\Debug\System.Buffers.dll" />
+    <Content Include="bin\Debug\System.Buffers.xml" />
+    <Content Include="bin\Debug\System.Memory.dll" />
+    <Content Include="bin\Debug\System.Memory.xml" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Debug\Ubiety.Dns.Core.dll" />
+    <Content Include="bin\Debug\ZstdNet.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
